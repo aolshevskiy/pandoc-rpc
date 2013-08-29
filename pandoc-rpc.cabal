@@ -6,7 +6,7 @@ License-file:        LICENSE
 Author:              Artyom Olshevskiy
 Maintainer:          siasiamail@gmail.com
 Build-Type: 				 Custom
-Cabal-Version: 			 >=1.16.0.2
+Cabal-Version: 			 >=1.2
 Executable pandoc-rpc
   Main-is:					 Main.hs
   ghc-options: 			 -threaded
@@ -15,6 +15,8 @@ Executable pandoc-rpc
   Build-Depends: 		 bytestring
   Build-Depends:		 protocol-buffers
   Build-Depends: 		 protocol-buffers-descriptor
+  Build-Depends: 		 alex
+  Build-Depends: 		 hprotoc
   Build-Depends: 		 pandoc
 
 	
