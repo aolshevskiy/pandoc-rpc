@@ -12,7 +12,7 @@ Executable pandoc-rpc
   ghc-options: 			 -threaded
   Build-Depends: 		 base >= 3 && < 5
   Build-Depends: 		 zeromq3-haskell
-  Build-Depends: 		 bytestring
+  Build-Depends: 		 bytestring >= 0.10
   Build-Depends:		 protocol-buffers
   Build-Depends: 		 protocol-buffers-descriptor
   Build-Depends: 		 hprotoc
