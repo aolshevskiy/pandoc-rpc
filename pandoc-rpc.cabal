@@ -1,0 +1,20 @@
+Name: 							 pandoc-rpc
+Version: 						 0.0.1
+Description: 				 Pandoc RPC
+License: 						 Apache-2.0
+License-file:        LICENSE
+Author:              Artyom Olshevskiy
+Maintainer:          siasiamail@gmail.com
+Build-Type: 				 Custom
+Cabal-Version: 			 >=1.2
+Executable pandoc-rpc
+  Main-is:					 Main.hs
+  ghc-options: 			 -threaded
+  Build-Depends: 		 base >= 3 && < 5
+  Build-Depends: 		 zeromq3-haskell
+  Build-Depends: 		 bytestring
+  Build-Depends:		 protocol-buffers
+  Build-Depends: 		 protocol-buffers-descriptor
+  Build-Depends: 		 pandoc
+
+	

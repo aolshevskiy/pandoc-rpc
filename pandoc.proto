@@ -1,0 +1,12 @@
+package text.pandoc.rpc.protocol;
+
+message PandocRequest {
+  required string inputFmt = 1;
+	required string outputFmt = 2;
+	required string input = 3;
+}
+
+message PandocResponse {
+	optional string error = 1;
+	optional string output = 2;
+}
