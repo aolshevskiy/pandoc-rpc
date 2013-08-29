@@ -1,5 +1,5 @@
 language: haskell
 env: ZMQVER=3.2.3
+before_install: .travis/install-zeromq.sh
 script:
-  - .travis/install-zeromq.sh
   - cabal configure --enable-tests --extra-include-dirs=.travis/zeromq-$ZMQVER/include --extra-lib-dirs=.travis/zeromq-$ZMQVER/src/.libs && cabal build && cabal test
