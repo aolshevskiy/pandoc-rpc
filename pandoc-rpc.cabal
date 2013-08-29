@@ -15,7 +15,6 @@ Executable pandoc-rpc
   Build-Depends: 		 bytestring
   Build-Depends:		 protocol-buffers
   Build-Depends: 		 protocol-buffers-descriptor
-  Build-Depends: 		 alex
   Build-Depends: 		 hprotoc
   Build-Depends: 		 pandoc
 
