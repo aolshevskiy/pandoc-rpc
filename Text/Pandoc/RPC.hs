@@ -6,7 +6,7 @@ import Text.Pandoc.Rpc.Protocol.PandocRequest
 import Text.ProtocolBuffers.Basic
 import Text.ProtocolBuffers.WireMessage
 import qualified Text.Pandoc.Rpc.Protocol.PandocResponse as R
-import Data.ByteString.Lazy.Char8
+import Data.ByteString.Lazy.Char8 hiding (putStrLn)
 import qualified Data.ByteString.Lazy as L
 import System.ZMQ3
 import Control.Concurrent (forkIO)
@@ -62,17 +62,18 @@ worker socket = do
         Right (msg, _) -> pandoc' msg
   send socket [] $ toStrict $ messagePut resp
 
-workers :: Context -> IO ()
-workers context = forM_ [0..10] $ \_ -> forkIO $ do
+workers :: Int -> Context -> IO ()
+workers workerCount context = forM_ [0..workerCount] $ \_ -> forkIO $ do
     withSocket context Rep $ \responder -> do
       connect responder "inproc://pandoc"
       forever $ worker responder
 
-main = do
+main :: String -> Int -> IO ()
+main endpoint workerCount = do
   withContext $ \context -> do
     withSocket context Router $ \frontend -> do
-      bind frontend "tcp://*:5559"
+      bind frontend endpoint
       withSocket context Dealer $ \backend -> do
         bind backend "inproc://pandoc"
-        workers context
+        workers workerCount context
         proxy frontend backend Nothing
